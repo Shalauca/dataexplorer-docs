@@ -7,7 +7,7 @@ ms.date: 08/11/2024
 ---
 # Kusto Query Language
 
-Kusto Query Language is a powerful tool to explore your data and discover patterns, identify anomalies and outliers, create statistical modeling, etc. 
+Kusto Query Language helps explore data, identify patterns and anomalies, and create statistical models.
 You can query different kinds of data. The language is expressive, easy to read and understand the query intent, and optimized for authoring experiences. Kusto Query Language is optimal for querying telemetry, metrics, and logs with deep support for text search and parsing, time-series operators and functions, analytics and aggregation, geospatial, vector similarity searches, and many other language constructs that provide the most optimal language for data analysis. The query uses schema entities that are organized in a hierarchy similar to SQLs: databases, tables, and columns.
 
 This article provides an explanation of the query language and offers practical exercises to get you started writing queries. To access the query environment, use the [Azure Data Explorer web UI](https://dataexplorer.azure.com/). To learn how to use KQL, see [Tutorial: Learn common operators](tutorials/learn-common-operators.md).
@@ -45,17 +45,17 @@ StormEvents
 |-----|
 |   28|
 
-Did you no, KQL is case-sensitive for everything – table names, table column names, operators, functions, and so on.
+Did you know, KQL is case-sensitive for everything – table names, table column names, operators, functions, and so on.
 
 This query has a single tabular expression statement. The statement begins with a reference to a table called *StormEvents* and contains several operators, [`where`](where-operator.md) and [`count`](count-operator.md), each separated by a pipe. The data rows for the source table are filtered by the value of the *StartTime* column and then filtered by the value of the *State* column. In the last line, the query returns a table with a single column and a single row containing the count of the remaining rows.
 
-In contrast to Kusto queries, [Management commands](../management/index.md are requests to     Kusto to process or modify data or metadata. For example, the following management command creates a new Kusto table with two columns, `Level` and `Number`:
+In contrast to Kusto queries, [Management commands](../management/index.md) are requests to     Kusto to process or modify data or metadata. For example, the following management command creates a new Kusto table with two columns, `Level` and `Number`:
 
 ```kusto
 .create table Logs (Level:string, Text:string)
 ```
 
-Management commands have their own syntax, which isn't part of the Kusto Query Language syntax, although the two share many concepts. In particular, management comands are distinguished from queries by having the first character in the text of the command be the dot (`.`) character (which can't start a query). Why do we do it like this? This distinction prevents many kinds of security attacks, simply because it prevents embedding management commands inside queries.
+Management commands have their own syntax, which isn't part of the Kusto Query Language syntax, although the two share many concepts. In particular, management commands are distinguished from queries by having the first character in the text of the command be the dot (`.`) character (which can't start a query). Why do we do it like this? This distinction prevents many kinds of security attacks, simply because it prevents embedding management commands inside queries.
 
 Not all management commands modify data or metadata. The large class of commands that start with `.show`, are used to display metadata or data. For example, the `.show tables` command returns a list of all tables in the current database.
 
